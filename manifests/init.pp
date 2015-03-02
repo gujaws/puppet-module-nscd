@@ -103,7 +103,7 @@ class nscd (
   case $::osfamily {
     'RedHat': {
       $default_server_user = 'nscd'
-      case $::lsbmajdistrelease {
+      case $::operatingsystemmajrelease {
         '5': {
           $enable_db_passwd_default          = true
           $enable_db_group_default           = true
@@ -129,13 +129,13 @@ class nscd (
           $enable_opt_auto_propagate_default = true
         }
         default: {
-          fail("Nscd is only supported on EL 5, 6 and 7. Your lsbmajdistrelease is identified as <${::lsbmajdistrelease}>.")
+          fail("Nscd is only supported on EL 5, 6 and 7. Your operatingsystemmajrelease is identified as <${::operatingsystemmajrelease}>.")
         }
       }
     }
     'Suse': {
       $default_server_user = undef
-      case $::lsbmajdistrelease {
+      case $::operatingsystemmajrelease {
         '10': {
           $enable_db_passwd_default          = true
           $enable_db_group_default           = true
@@ -153,7 +153,7 @@ class nscd (
           $enable_opt_auto_propagate_default = true
         }
         default: {
-          fail("Nscd is only supported on Suse 10 and 11. Your lsbmajdistrelease is identified as <${::lsbmajdistrelease}>.")
+          fail("Nscd is only supported on Suse 10 and 11. Your operatingsystemmajrelease is identified as <${::operatingsystemmajrelease}>.")
         }
       }
     }
